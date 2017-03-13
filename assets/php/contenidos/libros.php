@@ -7,9 +7,13 @@ $q = new Querys();
 $l = $q->libros();
 
 if($l){
+    $c = 0;
     $html = '<section class="row">';
     foreach($l as $row_l){
-       $html .= '<article class="col-md-3">';
+        if($c%4 == 0){
+            $html .= '<div class="row">';
+        }
+       $html .= '<article class="col-md-3 libro__info">';
        if(!empty($row_l["caratula"])){
            if(file_exists("imagenes/".$row_l["caratula"])){
                $html .= '<img src="imagenes/'.$row_l["caratula"].'" width="50" height="50">';
@@ -25,8 +29,11 @@ if($l){
         $html .= (!empty($row_l["genero"])) ? "<p>".$row_l["genero"]  . "</p>" : "";
         $html .= (!empty($row_l["editorial"])) ? "<p><strong>".$row_l["editorial"] . "</strong></p>" : "";
         $html .= (!empty($row_l["precio"])) ? "<p> $ ".$row_l["precio"] . "</p>" : "";
-        
        $html .= '</article>';
+       $c++;
+       if($c%4 == 0){
+          $html .= "</div>"; 
+       }
     }
     $html .= '</section>';
     
