@@ -19,8 +19,12 @@ if($l){
        } else {
            $html .= '<img src="imagenes/libro.jpeg" width="50" height="50">';
        }
-        $html .= (!empty($row_l["libro"])) ? $row_l["libro"] : "";
-        $html .= (!empty($row_l["autor"])) ? "<br>".$row_l["autor"] : "";
+        $html .= (!empty($row_l["libro"])) ? "<h3>" . $row_l["libro"] . "</h3>" : "";
+        $html .= (!empty($row_l["autor"])) ? "<p><em>".$row_l["autor"] . "</em></p>" : "";
+        $html .= (!empty($row_l["fecha"])) ? "<p>".$row_l["fecha"] . "</p>" : "";
+        $html .= (!empty($row_l["genero"])) ? "<p>".$row_l["genero"]  . "</p>" : "";
+        $html .= (!empty($row_l["editorial"])) ? "<p><strong>".$row_l["editorial"] . "</strong></p>" : "";
+        $html .= (!empty($row_l["precio"])) ? "<p> $ ".$row_l["precio"] . "</p>" : "";
         
        $html .= '</article>';
     }
