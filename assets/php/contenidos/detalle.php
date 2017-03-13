@@ -4,7 +4,7 @@ require_once(SYS_PATH_PHP . "Database.php");
 require_once(SYS_PATH_PHP . "Querys.php");
 
 $q = new Querys();
-$l = $q->libros();
+$l = $q->detLibro($_GET["menu"]);
 
 if($l){
     $c = 0;

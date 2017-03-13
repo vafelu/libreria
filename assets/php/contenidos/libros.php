@@ -14,7 +14,7 @@ if($l){
             $html .= '<div class="row">';
         }
        $html .= '<article class="col-md-3 libro__info">';
-       $html .= '<a href="/' . $row_l["url"] . '">';
+       $html .= '<a href="' . $row_l["url"] . '">';
        $html .= "<figure class='libro__img'>";
        if(!empty($row_l["caratula"])){
            if(file_exists("imagenes/".$row_l["caratula"])){
