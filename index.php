@@ -11,7 +11,14 @@
     
     <div class="container">
         <?php include("assets/php/generales/menu.php"); ?>
-        <?php include("assets/php/contenidos/libros.php"); ?>
+        <?php
+            $url = (isset($_GET["menu"])) ? $_GET["menu"] : "";
+            if ($url) {
+                include("assets/php/contenidos/detalle.php");
+            } else {
+                include("assets/php/contenidos/libros.php");   
+            }
+        ?>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
