@@ -25,14 +25,14 @@ if($l){
        $html .= '</figure>';
        $html .= '<div class="col-md-8">';
         $html .= (!empty($row_l["libro"])) ? "<h3>" . $row_l["libro"] . "</h3>" : "";
-        $html .= (!empty($row_l["autor"])) ? "<p><em>".$row_l["autor"] . "</em></p>" : "";
-        $html .= (!empty($row_l["fecha"])) ? "<p>".$row_l["fecha"] . "</p>" : "";
-        $html .= (!empty($row_l["genero"])) ? "<p>".$row_l["genero"]  . "</p>" : "";
-        $html .= (!empty($row_l["editorial"])) ? "<p><strong>".$row_l["editorial"] . "</strong></p>" : "";
-        $html .= (!empty($row_l["precio"])) ? "<p> $ ".$row_l["precio"] . "</p>" : "";
-        $html .= (!empty($row_l["inventario"])) ? "<p>".$row_l["inventario"] . "</p>" : "";
-        $html .= (!empty($row_l["codigo"])) ? "<p>".$row_l["codigo"] . "</p>" : "";
-        $html .= (!empty($row_l["descripcion"])) ? "<p>".nl2br($row_l["descripcion"]) . "</p>" : "";
+        $html .= (!empty($row_l["autor"])) ? "<p><strong>Autor: </strong><em>".$row_l["autor"] . "</em></p>" : "";
+        $html .= (!empty($row_l["fecha"])) ? "<p><strong>Fecha de publicación: </strong>".$row_l["fecha"] . "</p>" : "";
+        $html .= (!empty($row_l["genero"])) ? "<p><strong>Género: </strong>".$row_l["genero"]  . "</p>" : "";
+        $html .= (!empty($row_l["editorial"])) ? "<p><strong>Editorial: </strong>".$row_l["editorial"] . "</p>" : "";
+        $html .= (!empty($row_l["precio"])) ? "<p><strong>Precio: </strong>$ ".$row_l["precio"] . "</p>" : "";
+        $html .= (!empty($row_l["inventario"])) ? "<p class='btn btn-primary'><strong>Libros disponibles: </strong><span class='badge'>".$row_l["inventario"] . "</span></p>" : "";
+        $html .= (!empty($row_l["codigo"])) ? "<p><strong>ISBN: </strong>".$row_l["codigo"] . "</p>" : "";
+        $html .= (!empty($row_l["descripcion"])) ? "<p><strong>Descripción: </strong>".nl2br($row_l["descripcion"]) . "</p>" : "";
         $html .= "</div>";
        $html .= '</article>';
     }
