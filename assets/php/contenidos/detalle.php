@@ -39,6 +39,7 @@ if($l){
     $html .= '</section>';
     
     if($s){
+     
         $html .= "<div class='co-md-12'>";
         foreach($s as $row_s){
             $html .= "<figure class='col-md-2'>";
