@@ -1,0 +1,75 @@
+[03-Apr-2017 11:34:26 America/Bogota] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number' in /home/ubuntu/workspace/admin/php/system/Database.php:34
+Stack trace:
+#0 /home/ubuntu/workspace/admin/php/system/Database.php(34): PDOStatement->execute(Array)
+#1 /home/ubuntu/workspace/admin/php/system/Querys.php(10): Database->consulta('SELECT id_usuar...', Array)
+#2 /home/ubuntu/workspace/admin/php/login/index.php(7): Querys->login('admin', '588df570dda7ba2...')
+#3 {main}
+
+Next exception 'Exception' with message 'Database::consultaException Raised for sql: 'SELECT id_usuario FROM usuarios WHERE usuario IN (?) AND clave IN (?) AND estado IN (1) LIMIT 1;' Params: array (
+  0 => 'admin',
+) Error_Info: array (
+  0 => '00000',
+  1 => NULL,
+  2 => NULL,
+)' in /home/ubuntu/workspace/admin/php/system/Database.php:38
+Stack trace:
+#0 /home/ubuntu/workspace/admin/php/system/Querys.php(10): Database->consulta('SELECT id_usuar...', Array)
+#1 /home/ubuntu/workspace/admin/php/login/index.php(7): Querys->login('admin', '588df570dd in /home/ubuntu/workspace/admin/php/system/Database.php on line 38
+[03-Apr-2017 11:38:00 America/Bogota] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number' in /home/ubuntu/workspace/admin/php/system/Database.php:34
+Stack trace:
+#0 /home/ubuntu/workspace/admin/php/system/Database.php(34): PDOStatement->execute(Array)
+#1 /home/ubuntu/workspace/admin/php/system/Querys.php(10): Database->consulta('SELECT id_usuar...', Array)
+#2 /home/ubuntu/workspace/admin/php/login/index.php(7): Querys->login('admin', 'e28f37ecc15c883...')
+#3 {main}
+
+Next exception 'Exception' with message 'Database::consultaException Raised for sql: 'SELECT id_usuario FROM usuarios WHERE usuario IN (?) AND clave IN (?) AND estado IN (1) LIMIT 1;' Params: array (
+  0 => 'admin',
+) Error_Info: array (
+  0 => '00000',
+  1 => NULL,
+  2 => NULL,
+)' in /home/ubuntu/workspace/admin/php/system/Database.php:38
+Stack trace:
+#0 /home/ubuntu/workspace/admin/php/system/Querys.php(10): Database->consulta('SELECT id_usuar...', Array)
+#1 /home/ubuntu/workspace/admin/php/login/index.php(7): Querys->login('admin', 'e28f37ecc1 in /home/ubuntu/workspace/admin/php/system/Database.php on line 38
+[03-Apr-2017 11:43:57 America/Bogota] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number' in /home/ubuntu/workspace/admin/php/system/Database.php:34
+Stack trace:
+#0 /home/ubuntu/workspace/admin/php/system/Database.php(34): PDOStatement->execute(Array)
+#1 /home/ubuntu/workspace/admin/php/system/Querys.php(10): Database->consulta('SELECT id_usuar...', Array)
+#2 /home/ubuntu/workspace/admin/php/login/index.php(7): Querys->login(''wq'', ''e31174aa0977dc...')
+#3 {main}
+
+Next exception 'Exception' with message 'Database::consultaException Raised for sql: 'SELECT id_usuario FROM usuarios WHERE usuario IN (?) AND clave IN (?) AND estado IN (1) LIMIT 1;' Params: array (
+  0 => '\'wq\'',
+) Error_Info: array (
+  0 => '00000',
+  1 => NULL,
+  2 => NULL,
+)' in /home/ubuntu/workspace/admin/php/system/Database.php:38
+Stack trace:
+#0 /home/ubuntu/workspace/admin/php/system/Querys.php(10): Database->consulta('SELECT id_usuar...', Array)
+#1 /home/ubuntu/workspace/admin/php/login/index.php(7): Querys->login(''wq'', ''e31174aa09 in /home/ubuntu/workspace/admin/php/system/Database.php on line 38
+[03-Apr-2017 12:57:40 America/Bogota] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/ubuntu/workspace/admin/php/login/index.php on line 14
+[03-Apr-2017 12:57:40 America/Bogota] PHP Stack trace:
+[03-Apr-2017 12:57:40 America/Bogota] PHP   1. {main}() /home/ubuntu/workspace/admin/php/login/index.php:0
+[03-Apr-2017 12:57:40 America/Bogota] PHP   2. session_destroy() /home/ubuntu/workspace/admin/php/login/index.php:14
+[03-Apr-2017 12:58:08 America/Bogota] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/ubuntu/workspace/admin/php/login/index.php on line 14
+[03-Apr-2017 12:58:08 America/Bogota] PHP Stack trace:
+[03-Apr-2017 12:58:08 America/Bogota] PHP   1. {main}() /home/ubuntu/workspace/admin/php/login/index.php:0
+[03-Apr-2017 12:58:08 America/Bogota] PHP   2. session_destroy() /home/ubuntu/workspace/admin/php/login/index.php:14
+[03-Apr-2017 13:02:02 America/Bogota] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/ubuntu/workspace/admin/php/login/index.php on line 11
+[03-Apr-2017 13:02:02 America/Bogota] PHP Stack trace:
+[03-Apr-2017 13:02:02 America/Bogota] PHP   1. {main}() /home/ubuntu/workspace/admin/php/login/index.php:0
+[03-Apr-2017 13:02:02 America/Bogota] PHP   2. session_destroy() /home/ubuntu/workspace/admin/php/login/index.php:11
+[05-Apr-2017 10:18:11 America/Bogota] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/ubuntu/workspace/admin/php/login/index.php on line 11
+[05-Apr-2017 10:18:11 America/Bogota] PHP Stack trace:
+[05-Apr-2017 10:18:11 America/Bogota] PHP   1. {main}() /home/ubuntu/workspace/admin/php/login/index.php:0
+[05-Apr-2017 10:18:11 America/Bogota] PHP   2. session_destroy() /home/ubuntu/workspace/admin/php/login/index.php:11
+[05-Apr-2017 10:41:29 America/Bogota] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/ubuntu/workspace/admin/php/login/index.php on line 11
+[05-Apr-2017 10:41:29 America/Bogota] PHP Stack trace:
+[05-Apr-2017 10:41:29 America/Bogota] PHP   1. {main}() /home/ubuntu/workspace/admin/php/login/index.php:0
+[05-Apr-2017 10:41:29 America/Bogota] PHP   2. session_destroy() /home/ubuntu/workspace/admin/php/login/index.php:11
+[05-Apr-2017 10:41:38 America/Bogota] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/ubuntu/workspace/admin/php/login/index.php on line 11
+[05-Apr-2017 10:41:38 America/Bogota] PHP Stack trace:
+[05-Apr-2017 10:41:38 America/Bogota] PHP   1. {main}() /home/ubuntu/workspace/admin/php/login/index.php:0
+[05-Apr-2017 10:41:38 America/Bogota] PHP   2. session_destroy() /home/ubuntu/workspace/admin/php/login/index.php:11
