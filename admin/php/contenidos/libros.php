@@ -50,7 +50,7 @@ if($_SESSION["id_u"] === NULL){
                 $t .= "<td>" . $row_l["libro"] . "</td>";
                 $t .= "<td>" . $row_l["autor"] . "</td>";
                 $t .= "<td>" . $row_l["editorial"] . "</td>";
-                $t .= "<td> <button class='btn btn-info'>Editar</button> </td>";
+                $t .= "<td> <a href='libros-edit.php?lb=".$row_l["id_libro"]."'><button class='btn btn-info'>Editar</button></a> </td>";
                 $t .= "</tr>";
                 $c++;
             }
