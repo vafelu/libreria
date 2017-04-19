@@ -12,6 +12,10 @@ if(isset($_GET["lb"]) && !empty($_GET["lb"])){
     
     $q = new Querys();
     $l = $q->detLibro($_GET["lb"]);
+    $a = $q->autores();
+    $g = $q->generos();
+    $e = $q->editoriales();
+    
 } else {
     header("Location: libros.php");
 }
@@ -38,8 +42,61 @@ if(isset($_GET["lb"]) && !empty($_GET["lb"])){
         <?php
         if($l){
             $t = "<form id='edit' class='col-lg-5'>";
-            $c = 1;
             foreach ($l as $row_l) {
+                $estadoSelect = "";
+                for ($i = 0; $i < 3; $i++) {
+                    switch ($i) {
+                        case 0:
+                            $nombre = "Seleccione...";
+                            break;
+                        
+                        case 1:
+                            $nombre = "Activo";
+                            break;
+                        
+                        case 2:
+                            $nombre = "Inactivo";
+                            break;
+                        
+                        default:
+                            $nombre = "Seleccione...";
+                            break;
+                    }
+                    
+                    if($i == $row_l["estado"]){
+                        $estadoSelect .= "<option value='".$i."' selected>".$nombre."</option>";
+                    } else {
+                        $estadoSelect .= "<option value='".$i."'>".$nombre."</option>";
+                    }
+                }
+                
+                $autores = "";
+                foreach ($a as $row_a) {
+                    if($row_l["autor_id"] == $row_a["id_autor"]){
+                        $autores .= "<option value='".$row_a["id_autor"]."' selected>".$row_a["autor"]."</option>";
+                    } else {
+                       $autores .= "<option value='".$row_a["id_autor"]."'>".$row_a["autor"]."</option>"; 
+                    }
+                }
+                
+                $generos = "";
+                foreach ($g as $row_g) {
+                    if($row_l["genero_id"] == $row_g["id_genero"]){
+                        $generos .= "<option value='".$row_g["id_genero"]."' selected>".$row_g["genero"]."</option>";
+                    } else {
+                       $generos .= "<option value='".$row_g["id_genero"]."'>".$row_g["genero"]."</option>"; 
+                    }
+                }
+                
+                $editoriales = "";
+                foreach ($e as $row_e) {
+                    if($row_l["editorial_id"] == $row_e["id_editorial"]){
+                        $editoriales .= "<option value='".$row_e["id_editorial"]."' selected>".$row_e["editorial"]."</option>";
+                    } else {
+                       $editoriales .= "<option value='".$row_e["id_editorial"]."'>".$row_e["editorial"]."</option>"; 
+                    }
+                }
+                
                 $t .= "<div class='form-group'><label for='nombre'>Titulo: </label>
 <input type='text' id='nombre' class='form-control' value='". $row_l["libro"] ."'></div>";
 $t .= "<div class='form-group'><label for='fecha'>Fecha: </label>
@@ -58,20 +115,18 @@ $t .= "<div class='form-group'><label for='codigo'>Codigo: </label>
 <input type='text' id='codigo' class='form-control' value='". $row_l["codigo"] ."'></div>";
 $t .= "<div class='form-group'><label for='url'>URL: </label>
 <input type='text' id='url' class='form-control' value='". $row_l["url"] ."'></div>";
-if($row_l["estado"] == 0){ $estadoSelect = "<option value='0' selected>Seleccione</option>"; } else { $estadoSelect = "<option value='0'>Seleccione</option>"; }
-if($row_l["estado"] == 1){ $estadoSelect .= "<option value='1' selected>Activo</option>"; } else { $estadoSelect .= "<option value='0'>Activo</option>"; }
-if($row_l["estado"] == 2){ $estadoSelect .= "<option value='2' selected>Inactivo</option>"; } else { $estadoSelect .= "<option value='0'>Inactivo</option>"; }
-
 $t .= "<div class='form-group'><label for='estado'>Estado: </label>
-<select name='estado' id='estado'>" . $estadoSelect . "</select>";
+<select name='estado' id='estado' class='form-control'>" . $estadoSelect . "</select></div>";
 $t .= "<div class='form-group'><label for='autor'>Autor: </label>
-<input type='text' id='autor' class='form-control' value='". $row_l["autor_id"] ."'></div>";
+<select id='autor' class='form-control'>".$autores."</select></div>";
 $t .= "<div class='form-group'><label for='editorial'>Editorial: </label>
-<input type='text' id='editorial' class='form-control' value='". $row_l["editorial_id"] ."'></div>";
+<select id='editorial' class='form-control'>".$editoriales."</select></div>";
 $t .= "<div class='form-group'><label for='genero'>Genero: </label>
-<input type='text' id='genero' class='form-control' value='". $row_l["genero_id"] ."'></div>";
-                $c++;
+<select id='genero' class='form-control'>".$generos."</select></div>";
             }
+            $t .= "<input type='hidden' value='".$_GET["lb"]."' name='idLibro' id='idLibro'>";
+            $t .= "<div class='form-group'>
+                    <button class='btn btn-default' id='btn-edit'>Actualizar</button></div>";
             $t .= "</form>";
             
             echo $t;
@@ -81,5 +136,40 @@ $t .= "<div class='form-group'><label for='genero'>Genero: </label>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $("#btn-edit").on("click", function(e){
+            e.preventDefault();
+            var fn = $("#nombre").val();
+            var ff = $("#fecha").val();
+            var fc = $("#caratula").val();
+            var fi = $("#inventario").val();
+            var fp = $("#precio").val();
+            var fpg = $("#pagina").val();
+            var fd = $("#descripcion").val();
+            var fcd = $("#codigo").val();
+            var fu = $("#url").val();
+            var fe = $("#estado").val();
+            var fa = $("#autor").val();
+            var fg = $("#genero").val();
+            var fed = $("#editorial").val();
+            var fid = $("#idLibro").val();
+            
+            $.ajax({
+                method : "post",
+                url : "../system/edit-libro.php",
+                data : {nombre : fn, fecha : ff, caratula : fc, inventario : fi, precio : fp, paginas : fpg, descripcion : fd, codigo: fcd, url: fu, estado : fe, autor: fa, genero : fg, editorial : fed, idlibro :  fid}
+            }).done(function(msg) {
+                console.log(msg);
+                if(msg == "ok"){
+                    document.location = "libros.php"
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
+
+
+

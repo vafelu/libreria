@@ -57,6 +57,42 @@ class Querys
         exit();
     }
     
+    public function autores() {
+        $id = $this->conn->consulta("SELECT id_autor, autor, bio FROM autores  ORDER BY autor ASC;");
+        if($id) {
+            return $id;
+        } else {
+            return false;
+        }
+
+        $this->conn = NULL;
+        exit();
+    }
+    
+    public function editoriales() {
+        $id = $this->conn->consulta("SELECT id_editorial, editorial FROM editoriales ORDER BY editorial ASC;");
+        if($id) {
+            return $id;
+        } else {
+            return false;
+        }
+
+        $this->conn = NULL;
+        exit();
+    }
+    
+    public function generos() {
+        $id = $this->conn->consulta("SELECT id_genero, genero FROM generos ORDER BY genero ASC;");
+        if($id) {
+            return $id;
+        } else {
+            return false;
+        }
+
+        $this->conn = NULL;
+        exit();
+    }
+    
     public function sugeridos($p = array()) {
         $pa = is_array($p) ? $p : array($p);
         $id = $this->conn->consulta("SELECT libro, caratula FROM libros WHERE url NOT IN (?) AND estado IN (1) ORDER BY RAND() LIMIT 6;", $pa);
@@ -70,9 +106,9 @@ class Querys
         exit();
     }
 
-    public function up($p = array()) {
+    public function actualizarLibro($p = array()) {
         $pa = is_array($p) ? $p : array($p);
-        $id = $this->conn->accion("UPDATE municipios SET municipio = ? WHERE estado IN (1) AND municipio IN (?);", $pa);
+        $id = $this->conn->accion("UPDATE libros SET libro = ?, fecha = ?, caratula = ?, inventario = ?, precio = ?, paginas = ?, descripcion = ?, codigo = ?, url = ?, estado = ?, autor_id = ?, editorial_id = ?, genero_id = ? WHERE id_libro IN (?);", $pa);
         if($id) {
             return $id;
         } else {

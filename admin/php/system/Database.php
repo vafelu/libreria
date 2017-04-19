@@ -43,11 +43,15 @@ class Database extends PDO
        try {
           $stmt = parent::prepare($query);
           $params = is_array($params) ? $params : array($params);
-          $stmt->bindParam(1, $params[0], PDO::PARAM_STR, 255);
-          $stmt->bindParam(2, $params[1], PDO::PARAM_STR, 255);
+          for($i = 0; $i < count($params); $i++){
+            $stmt->bindParam($i+1, $params[$i], PDO::PARAM_STR, 2048);
+          }
           $stmt->execute();
+          
+          echo "ok";
+          exit();
        } catch (Exception $e) {
-          throw new Exception(__METHOD__ . 'Exception Raised for sql: ' . var_export($query, true) . ' Params: ' . var_export($params, true) . ' Error_Info: ' . var_export($this->errorInfo(), true), 0, $e);
+          throw new Exception(__METHOD__ . ' Exception Raised for sql: ' . var_export($query, true) . ' Params: ' . var_export($params, true) . ' Error_Info: ' . var_export($this->errorInfo(), true), 0, $e);
        }
     }
 }
