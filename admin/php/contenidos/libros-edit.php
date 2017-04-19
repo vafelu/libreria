@@ -134,6 +134,24 @@ $t .= "<div class='form-group'><label for='genero'>Genero: </label>
         ?>
     </section>
     
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Actualización de información</h4>
+          </div>
+          <div class="modal-body">
+            La información del libro ha sido actualizada.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="save">Volver al listado</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
@@ -162,9 +180,13 @@ $t .= "<div class='form-group'><label for='genero'>Genero: </label>
             }).done(function(msg) {
                 console.log(msg);
                 if(msg == "ok"){
-                    document.location = "libros.php"
+                    $("#myModal").modal();
                 }
             });
+        });
+        
+        $("#save").on("click", function(){
+            document.location = "libros.php"
         });
     });
 </script>

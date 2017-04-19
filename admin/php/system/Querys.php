@@ -33,7 +33,7 @@ class Querys
     
     public function libros($p = array()) {
         $pa = is_array($p) ? $p : array($p);
-        $id = $this->conn->consulta("SELECT id_libro, libro, fecha, caratula, precio,  autor, genero, editorial, url FROM libros INNER JOIN autores ON (id_autor = autor_id) INNER JOIN generos ON (id_genero = genero_id) INNER JOIN editoriales ON (id_editorial = editorial_id) WHERE estado IN (1) ORDER BY libro ASC LIMIT 0, 12;", $pa);
+        $id = $this->conn->consulta("SELECT id_libro, libro, fecha, caratula, precio,  autor, genero, editorial, url, estado FROM libros INNER JOIN autores ON (id_autor = autor_id) INNER JOIN generos ON (id_genero = genero_id) INNER JOIN editoriales ON (id_editorial = editorial_id) ORDER BY libro ASC LIMIT 0, 12;", $pa);
         if($id) {
             return $id;
         } else {

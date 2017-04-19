@@ -45,12 +45,13 @@ if($_SESSION["id_u"] === NULL){
                 </thead>";
             $c = 1;
             foreach ($l as $row_l) {
+                $estado = ($row_l["estado"] == 1) ? "info" : "danger";
                 $t .= "<tr>";
                 $t .= "<td>" . $c . "</td>";
                 $t .= "<td>" . $row_l["libro"] . "</td>";
                 $t .= "<td>" . $row_l["autor"] . "</td>";
                 $t .= "<td>" . $row_l["editorial"] . "</td>";
-                $t .= "<td> <a href='libros-edit.php?lb=".$row_l["id_libro"]."'><button class='btn btn-info'>Editar</button></a> </td>";
+                $t .= "<td> <a href='libros-edit.php?lb=".$row_l["id_libro"]."'><button class='btn btn-$estado'>Editar</button></a> </td>";
                 $t .= "</tr>";
                 $c++;
             }
