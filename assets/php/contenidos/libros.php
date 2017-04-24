@@ -45,5 +45,3 @@ if($l){
     
     echo $html;
 }
-
-exit();
