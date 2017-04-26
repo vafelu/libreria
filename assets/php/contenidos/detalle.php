@@ -11,8 +11,7 @@ if($l){
     $html = '<section class="row">';
     foreach($l as $row_l){
        $html .= '<article class="col-md-12 libro__info">';
-       $html .= "<figure class='libro__img col-md-4
-       '>";
+       $html .= "<figure class='libro__img col-md-3'>";
        if(!empty($row_l["caratula"])){
            if(file_exists("imagenes/".$row_l["caratula"])){
                $html .= '<img src="imagenes/'.$row_l["caratula"].'" width="50" height="50">';
@@ -23,7 +22,7 @@ if($l){
            $html .= '<img src="imagenes/libro.jpeg" width="50" height="50">';
        }
        $html .= '</figure>';
-       $html .= '<div class="col-md-8">';
+       $html .= '<div class="col-md-5">';
         $html .= (!empty($row_l["libro"])) ? "<h3>" . $row_l["libro"] . "</h3>" : "";
         $html .= (!empty($row_l["autor"])) ? "<p><strong>Autor: </strong><em>".$row_l["autor"] . "</em></p>" : "";
         $html .= (!empty($row_l["fecha"])) ? "<p><strong>Fecha de publicación: </strong>".$row_l["fecha"] . "</p>" : "";
@@ -34,6 +33,16 @@ if($l){
         $html .= (!empty($row_l["codigo"])) ? "<p><strong>ISBN: </strong>".$row_l["codigo"] . "</p>" : "";
         $html .= (!empty($row_l["descripcion"])) ? "<p><strong>Descripción: </strong>".nl2br($row_l["descripcion"]) . "</p>" : "";
         $html .= "</div>";
+        $html .= '<div class="col-md-4"><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">Carro de compras</h4></div>';
+        $html .= '<div class="panel-body">Cantidad : <select id="cantidad">';
+        for($i= 0; $i < $row_l["inventario"]; $i++){
+            $c = $i + 1;
+            $html .= '<option value="' . $c . '">' . $c . '</option>';
+        }
+        $html .= '</select>';
+        $html .= '<hr><button type="button" class="btn btn-default" id="btn-carro"><i class="glyphicon glyphicon-shopping-cart"></i> Agregar al carro</button>';
+        $html .= '<input type="hidden" id="idLibro" value="'.$row_l["id_libro"].'">';
+        $html .= "</div> </div> </div>";
        $html .= '</article>';
     }
     $html .= '</section>';

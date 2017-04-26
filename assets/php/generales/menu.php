@@ -7,7 +7,7 @@ $q = new Querys();
 $menu = $q->menu();
 
 echo '<nav class="navbar navbar-inverse">
-      <a class="navbar-brand" href="#">Librería</a>';
+      <a class="navbar-brand" href="/">Librería</a>';
 
 if($menu){
     echo "<ul class='nav nav-pills'>";
