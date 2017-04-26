@@ -1,5 +1,8 @@
 /* Carro de compras */
-var json = {items: []};
+if(!localStorage.getItem('json')) {
+    var json = localStorage;
+}
+var datos = {items: []};
 
 var Carro = function(c, l){
     this.cantidad = c;
@@ -9,9 +12,23 @@ var Carro = function(c, l){
 }
 
 function mostrar(){
-    json.items.push('{"libro":' + this.libro + ', "cantidad":' + this.cantidad + '}');
-    console.log(json);
-    console.log(json.items.length);
+    datos.items.length = 0;
+    datos.items.push('{"libro":' + this.libro + ', "cantidad":' + this.cantidad + '}');
+    
+    if(localStorage.getItem('json')) {
+        var dt = JSON.parse("[" + localStorage.getItem('json') +"]");
+        
+        for(var i = 0; i < dt.length; i++){
+            datos.items.push('{"libro":' + dt[i].libro + ', "cantidad":' + dt[i].cantidad + '}');
+        }
+    }
+    
+    localStorage.setItem("json", datos.items);
+    
+   
+    console.log("items: " + datos.items.length);
+    console.log(datos.items);
+    //console.log(dt.length);
 }
 
 $(function(){
