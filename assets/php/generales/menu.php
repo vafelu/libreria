@@ -14,6 +14,8 @@ if($menu){
     foreach($menu as $row_menu){
         echo "<li><a href='javascript:;'>" . $row_menu["genero"] . "</a></li>";
     }
+    
+    echo "<li><a class='glyphicon glyphicon-shopping-cart' id='carrito'></a></li>";
     echo "</ul>";
 }
 

@@ -31,11 +31,38 @@ function mostrar(){
     //console.log(dt.length);
 }
 
+function detalleCarro(){
+    if(localStorage.getItem('json')) {
+        var datos = localStorage.getItem('json');
+    } else {
+        document.location = "/";
+    }
+    
+    $.ajax({
+        method: "post",
+        url: "assets/php/contenidos/carro.php",
+        data: {i: datos}
+    }).done(function(msg) {
+        console.log(msg);
+        /*if(msg == "error"){
+            $("#c-error").show(300);
+        } else {
+            document.location = msg;
+        }*/
+    }).fail(function(msg) {
+        console.log(msg);
+        //$("#c-error").show(300);
+    });
+}
+
 $(function(){
     $("#btn-carro").on("click", function(){
         var c = new Carro($("#cantidad").val(), $("#idLibro").val());
         c.mostrar();
     });
+    
+    $("#carrito").on("click", function(){
+        detalleCarro();
+    });
 });
 
-// http://stackoverflow.com/questions/4538269/adding-removing-items-from-json-data-with-jquery

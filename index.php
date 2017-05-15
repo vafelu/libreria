@@ -14,7 +14,11 @@
         <?php
             $url = (isset($_GET["menu"])) ? $_GET["menu"] : "";
             if ($url) {
-                include("assets/php/contenidos/detalle.php");
+                if($url == "carro"){
+                    include("assets/php/contenidos/carro.php");
+                } else {
+                    include("assets/php/contenidos/detalle.php");    
+                }
             } else {
                 include("assets/php/contenidos/libros.php");   
             }
