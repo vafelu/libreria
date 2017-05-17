@@ -26,33 +26,34 @@ function mostrar(){
     localStorage.setItem("json", datos.items);
     
    
-    console.log("items: " + datos.items.length);
-    console.log(datos.items);
+    //console.log("items: " + datos.items.length);
+    //console.log(datos.items);
     //console.log(dt.length);
 }
 
 function detalleCarro(){
-    if(localStorage.getItem('json')) {
-        var datos = localStorage.getItem('json');
+    var datos = localStorage.getItem('json');
+    if(datos) {
+        //console.log(datos);
+        $.ajax({
+            method: "post",
+            url: "assets/php/contenidos/carro.php",
+            data: {i: datos}
+        }).done(function(msg) {
+            console.log(msg);
+            document.location = "/carro";
+            /*if(msg == "error"){
+                $("#c-error").show(300);
+            } else {
+                document.location = msg;
+            }*/
+        }).fail(function(msg) {
+            console.log(msg);
+            //$("#c-error").show(300);
+        });
     } else {
         document.location = "/";
     }
-    
-    $.ajax({
-        method: "post",
-        url: "assets/php/contenidos/carro.php",
-        data: {i: datos}
-    }).done(function(msg) {
-        console.log(msg);
-        /*if(msg == "error"){
-            $("#c-error").show(300);
-        } else {
-            document.location = msg;
-        }*/
-    }).fail(function(msg) {
-        console.log(msg);
-        //$("#c-error").show(300);
-    });
 }
 
 $(function(){

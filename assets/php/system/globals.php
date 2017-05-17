@@ -12,6 +12,7 @@ define("ROOT", realpath(dirname(__FILE__)) . DS);
 define("SYS_PATH_PHP", "assets" . DS . "php" . DS . "system" . DS);
 define("GEN_PATH_PHP", "assets" . DS . "php" . DS . "generales" . DS);
 define("CON_PATH_PHP", "assets" . DS . "php" . DS . "contenidos" . DS);
+$_GLOBALS["carro"] = "";
 
 header('Content-type: text/html; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
